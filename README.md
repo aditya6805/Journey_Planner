@@ -1,109 +1,120 @@
-# Journey Planner - Your Smart Travel Companion
+# Journey Planner - India Travel Route Finder
 
-Journey Planner is an intelligent travel planning platform designed to help users find the most efficient and convenient routes across India. Whether you're planning a short trip or a long journey, our platform provides comprehensive travel solutions combining various modes of transportation.
+![Journey Planner Screenshot](https://via.placeholder.com/800x400?text=Journey+Planner+Screenshot)
 
-## Features
+## 🚌 Overview
 
-### Multi-Modal Travel Planning
+Journey Planner is a comprehensive travel planning application designed specifically for navigating India's diverse transportation network. The application helps users find optimal routes between cities and towns across India, with a focus on bus travel and intermodal connections.
 
-- **BUS ONLY**: Direct bus routes between cities
-- **TRAIN + BUS**: Combined railway and bus connectivity
-- **FLIGHT + BUS/AUTO**: Air travel with last-mile connectivity options
+## ✨ Features
 
-### Smart Features
+- **Search Routes**: Find the fastest and most convenient routes between any two cities in India
+- **Dynamic Map Integration**: Real-time visualization of routes on an interactive map
+- **Multiple Travel Modes**: Filter results by travel mode (bus, train+bus, flight+bus)
+- **AI Journey Planner**: Get personalized travel recommendations using our AI-powered planner
+- **Last Mile Connectivity**: Information about local transportation options at your destination
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 
-- Real-time route suggestions
-- Multiple route options for each travel mode
-- Estimated travel duration
-- Cost comparison across different routes
-- Last-mile connectivity solutions
+## 🛠️ Technologies Used
 
-### User-Friendly Interface
+- **Frontend**:
 
-- Simple and intuitive search system
-- Interactive route visualization
-- Comprehensive route details
-- Filter options for customized search
+  - React.js
+  - React Router for navigation
+  - Tailwind CSS for styling
+  - Google Maps integration for route visualization
+  - Country-State-City API for location data
 
-## Project Structure
+- **UI Components**:
+  - Custom UI components
+  - Responsive layout with responsive design
+  - Interactive form elements
 
-This project consists of two main parts:
-
-- **Frontend** (`/frontend`): A React application built with Vite, using Tailwind CSS for styling
-- **Backend** (`/backend`): An Express.js API that uses Gemini API for intelligent route planning
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16+)
+- Node.js (v14.0.0 or later)
 - npm or yarn
-- Google Gemini API key
 
-### Setting Up the Backend
+### Installation
 
-1. Navigate to the backend directory:
+1. Clone the repository:
 
-   ```
-   cd backend
+   ```bash
+   git clone https://github.com/yourusername/journey-planner.git
+   cd journey-planner
    ```
 
 2. Install dependencies:
 
-   ```
+   ```bash
+   # In the root directory
    npm install
-   ```
 
-3. Create a `.env` file with the following content:
-
-   ```
-   PORT=5000
-   GEMINI_API_KEY=your_gemini_api_key_here
-   ```
-
-4. Start the development server:
-   ```
-   npm run dev
-   ```
-
-### Setting Up the Frontend
-
-1. Navigate to the frontend directory:
-
-   ```
+   # Change to frontend directory
    cd frontend
-   ```
-
-2. Install dependencies:
-
-   ```
    npm install
    ```
 
 3. Start the development server:
 
-   ```
+   ```bash
    npm run dev
    ```
 
 4. Open your browser and navigate to `http://localhost:5173`
 
-## Technologies Used
+## 📱 Application Structure
 
-- **Frontend**:
+- **Home Page**: Introduction and main features
+- **Search Page**: Find routes between cities with an interactive map
+- **AI Planner Page**: Get personalized journey recommendations
+- **Journey Details**: View detailed information about selected routes
 
-  - React
-  - Vite
-  - Tailwind CSS
-  - React Router
-  - date-fns
+## 🔍 How to Use
 
-- **Backend**:
-  - Express.js
-  - Google Generative AI (Gemini API)
-  - dotenv
-  - cors
+1. **Finding a Route**:
 
-## License
+   - Select origin and destination states and cities
+   - Choose a travel date and preferred travel mode
+   - Click "Search Routes" to find available options
+   - The map will automatically update to show your selected route
 
-MIT
+2. **AI Planner**:
+   - Enter your travel preferences
+   - Get personalized recommendations for your journey
+   - View detailed itineraries with multiple options
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+For feedback and suggestions, please reach out at:
+
+- Email: singhadityath5115@gmail.com
+- GitHub: [Your GitHub Profile](https://github.com/yourusername)
+
+## 🙏 Acknowledgements
+
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Google Maps](https://developers.google.com/maps)
+- [Country-State-City](https://github.com/harpreetkhalsagtbit/country-state-city)
+- All the open-source libraries that made this project possible
+
+---
+
+Made with ❤️ in India
