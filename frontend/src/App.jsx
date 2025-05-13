@@ -1,16 +1,17 @@
-import { HeroSection } from './components/hero-section';
-import { SearchForm } from './components/search-form';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { SearchPage } from './pages/SearchPage';
+import { AIPlanner } from './pages/AIPlanner';
 
 function App() {
   return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-3xl mx-auto">
-          <SearchForm />
-        </div>
-      </div>
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/ai-planner" element={<AIPlanner />} />
+      </Routes>
+    </Router>
   );
 }
 

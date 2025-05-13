@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "../lib/utils";
 import { ChevronDown, Check } from "lucide-react";
 
-export function Combobox({ options, value, onChange, placeholder, className }) {
+export function Combobox({ options, value, onChange, placeholder, className, disabled = false }) {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -18,8 +18,9 @@ export function Combobox({ options, value, onChange, placeholder, className }) {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onClick={() => setOpen(true)}
+          onClick={() => !disabled && setOpen(true)}
           placeholder={placeholder}
+          disabled={disabled}
           className={cn(
             "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
             className
@@ -27,13 +28,17 @@ export function Combobox({ options, value, onChange, placeholder, className }) {
         />
         <button
           type="button"
-          onClick={() => setOpen(!open)}
-          className="absolute right-1 top-1/2 -translate-y-1/2 p-1"
+          onClick={() => !disabled && setOpen(!open)}
+          className={cn(
+            "absolute right-1 top-1/2 -translate-y-1/2 p-1",
+            disabled && "opacity-50 cursor-not-allowed"
+          )}
+          disabled={disabled}
         >
           <ChevronDown className="h-4 w-4 opacity-50" />
         </button>
       </div>
-      {open && (
+      {open && !disabled && (
         <div className="absolute top-full mt-1 w-full rounded-md border border-input bg-background shadow-md z-10 max-h-60 overflow-auto">
           {filteredOptions.length > 0 ? (
             filteredOptions.map((option) => (
