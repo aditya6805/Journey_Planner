@@ -30,6 +30,10 @@ export function SearchForm() {
   const [stateOptions, setStateOptions] = useState([]);
   const [originCityOptions, setOriginCityOptions] = useState([]);
   const [destinationCityOptions, setDestinationCityOptions] = useState([]);
+  
+  // Find state names for display in map
+  const [originStateName, setOriginStateName] = useState("");
+  const [destinationStateName, setDestinationStateName] = useState("");
 
   // Load states on component mount
   useEffect(() => {
@@ -49,10 +53,15 @@ export function SearchForm() {
       }));
       setOriginCityOptions(cities);
       setOriginCity(""); // Reset city when state changes
+      
+      // Set state name for map display
+      const selectedState = stateOptions.find(state => state.value === originState);
+      setOriginStateName(selectedState?.label || "");
     } else {
       setOriginCityOptions([]);
+      setOriginStateName("");
     }
-  }, [originState]);
+  }, [originState, stateOptions]);
 
   // Load cities when destination state changes
   useEffect(() => {
@@ -63,10 +72,15 @@ export function SearchForm() {
       }));
       setDestinationCityOptions(cities);
       setDestinationCity(""); // Reset city when state changes
+      
+      // Set state name for map display
+      const selectedState = stateOptions.find(state => state.value === destinationState);
+      setDestinationStateName(selectedState?.label || "");
     } else {
       setDestinationCityOptions([]);
+      setDestinationStateName("");
     }
-  }, [destinationState]);
+  }, [destinationState, stateOptions]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -194,32 +208,55 @@ export function SearchForm() {
 
                   <div className="space-y-2">
                     <Label className="flex items-center gap-2">Travel Mode</Label>
-                    <RadioGroup value={travelMode} onValueChange={handleTravelModeChange}>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="all" id="all" />
-                        <Label htmlFor="all" className="cursor-pointer">
-                          All Options
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="bus" id="bus" />
-                        <Label htmlFor="bus" className="cursor-pointer">
-                          Bus Only
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="train-bus" id="train-bus" />
-                        <Label htmlFor="train-bus" className="cursor-pointer">
-                          Train + Bus
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="flight-bus" id="flight-bus" />
-                        <Label htmlFor="flight-bus" className="cursor-pointer">
-                          Flight + Bus/Auto
-                        </Label>
-                      </div>
-                    </RadioGroup>
+                    <div className="space-y-2">
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="travelMode" 
+                          value="all" 
+                          checked={travelMode === "all"} 
+                          onChange={() => handleTravelModeChange("all")}
+                          className="h-4 w-4 text-blue-600"
+                        />
+                        <span>All Options</span>
+                      </label>
+                      
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="travelMode" 
+                          value="bus" 
+                          checked={travelMode === "bus"} 
+                          onChange={() => handleTravelModeChange("bus")}
+                          className="h-4 w-4 text-blue-600"
+                        />
+                        <span>Bus Only</span>
+                      </label>
+                      
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="travelMode" 
+                          value="train-bus" 
+                          checked={travelMode === "train-bus"} 
+                          onChange={() => handleTravelModeChange("train-bus")}
+                          className="h-4 w-4 text-blue-600"
+                        />
+                        <span>Train + Bus</span>
+                      </label>
+                      
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="travelMode" 
+                          value="flight-bus" 
+                          checked={travelMode === "flight-bus"} 
+                          onChange={() => handleTravelModeChange("flight-bus")}
+                          className="h-4 w-4 text-blue-600"
+                        />
+                        <span>Flight + Bus/Auto</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -243,7 +280,12 @@ export function SearchForm() {
         
         {/* Map Section - Right Side */}
         <div className="lg:col-span-7">
-          <ActualIndiaMap />
+          <ActualIndiaMap 
+            originCity={originCity} 
+            destinationCity={destinationCity}
+            originState={originStateName}
+            destinationState={destinationStateName}
+          />
         </div>
       </div>
 
