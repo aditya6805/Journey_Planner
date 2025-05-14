@@ -4,9 +4,9 @@ import { ChevronLeft } from 'lucide-react';
 
 export function SearchPage() {
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-blue-600 text-white py-4 z-50">
+      <header className="w-full bg-blue-600 text-white py-4">
         <div className="container mx-auto px-4 flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-semibold flex items-center">
