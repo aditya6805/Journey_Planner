@@ -1,11 +1,23 @@
 import { Link } from 'react-router-dom';
 import { Button } from "../components/ui/button";
+import { useState } from 'react';
 
 export function HomePage() {
+  // Feedback form state
+  const [feedbackEmail, setFeedbackEmail] = useState('');
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for your feedback!');
+    setFeedbackEmail('');
+    setFeedbackMessage('');
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Header */}
-      <header className="w-full bg-blue-600 text-white py-4">
+      <header className="fixed top-0 w-full bg-blue-600 text-white py-4 z-50">
         <div className="container mx-auto px-4 flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-semibold flex items-center">
@@ -116,6 +128,45 @@ export function HomePage() {
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-200 py-8">
+        <div className="container mx-auto px-4 text-center">
+          {/* Feedback Form */}
+          <form className="max-w-md mx-auto mb-6" onSubmit={handleFeedbackSubmit}>
+            <h4 className="text-lg font-semibold mb-2">We value your feedback</h4>
+            <input
+              type="email"
+              placeholder="Your email"
+              required
+              value={feedbackEmail}
+              onChange={(e) => setFeedbackEmail(e.target.value)}
+              className="w-full mb-2 px-3 py-2 rounded bg-white text-gray-800"
+            />
+            <textarea
+              placeholder="Your feedback"
+              required
+              value={feedbackMessage}
+              onChange={(e) => setFeedbackMessage(e.target.value)}
+              className="w-full mb-2 px-3 py-2 rounded bg-white text-gray-800"
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            >
+              Submit
+            </button>
+          </form>
+          <p className="mb-4">Contact us: contact@journeyplanner.com | +91 99887 66554</p>
+          <div className="flex justify-center space-x-4">
+            <Link to="/about" className="hover:text-white">About Us</Link>
+            <Link to="/contact" className="hover:text-white">Contact</Link>
+            <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white">Terms of Service</Link>
+          </div>
+          <p className="mt-6 text-sm">&copy; {new Date().getFullYear()} Journey Planner. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 } 
